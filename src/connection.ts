@@ -7,7 +7,7 @@ import { Dictionary, isFunction } from 'lodash';
 import { AuthToken, Config, Driver, Session } from 'neo4j-driver/types/v1';
 import { Transformer } from './transformer';
 import { Query } from './query';
-import { v1 as neo4j } from 'neo4j-driver';
+import neo4j from 'neo4j-driver/lib/browser/neo4j-web';
 import { Builder } from './builder';
 import { Clause } from './clause';
 

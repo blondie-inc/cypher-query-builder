@@ -1,4 +1,4 @@
-import { v1 as neo4j } from 'neo4j-driver';
+import neo4j from 'neo4j-driver/lib/browser/neo4j-web';
 import { Dictionary, map, mapValues, isArray } from 'lodash';
 import { Record, Integer } from 'neo4j-driver/types/v1';
 
