@@ -27,7 +27,6 @@ import _zip from 'lodash/zip';
 import _flatten from 'lodash/flatten';
 import AnyPromise from 'any-promise';
 import Observable from 'any-observable';
-import nodeCleanup from 'node-cleanup';
 import neo4j from 'neo4j-driver/lib/browser/neo4j-web';
 
 /**
@@ -2924,13 +2923,6 @@ class Query extends Builder {
 
 }
 
-let connections = []; // Closes all open connections
-
-nodeCleanup(() => {
-  connections.forEach(con => con.close());
-  connections = [];
-});
-
 function isCredentials(credentials) {
   return 'username' in credentials && 'password' in credentials;
 } // We have to correct the type of lodash's isFunction method because it doesn't correctly narrow
@@ -3020,7 +3012,6 @@ class Connection extends Builder {
     };
     this.driver = driverConstructor(this.url, this.auth, this.options.driverConfig);
     this.open = true;
-    connections.push(this);
   }
   /**
    * Closes this connection if it is open. Closed connections cannot be
