@@ -2,7 +2,7 @@
 import AnyPromise from 'any-promise';
 // tslint:disable-next-line import-name
 import Observable from 'any-observable';
-import nodeCleanup from 'node-cleanup';
+// import nodeCleanup from 'node-cleanup';
 import { Dictionary, isFunction } from 'lodash';
 import { AuthToken, Config, Driver, Session } from 'neo4j-driver/types/v1';
 import { Transformer } from './transformer';
@@ -14,10 +14,10 @@ import { Clause } from './clause';
 let connections: Connection[] = [];
 
 // Closes all open connections
-nodeCleanup(() => {
-  connections.forEach(con => con.close());
-  connections = [];
-});
+// nodeCleanup(() => {
+//   connections.forEach(con => con.close());
+//   connections = [];
+// });
 
 export interface Observer<T> {
   closed?: boolean;
